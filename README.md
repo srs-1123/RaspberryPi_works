@@ -1,7 +1,10 @@
-# raspberry_pi_works
+# RaspberryPi_works
 
 ## 説明
-raspberry pi で作成したプログラムに関するリポジトリ
+Raspberry Piで作成したプログラムに関するリポジトリ
+
+## 使用する機種
+Raspberry Pi 4 Model B/2GB
 
 ## 作成したコード
 * webcam_controller: usb接続したwebカメラを操作するpythonプログラム
