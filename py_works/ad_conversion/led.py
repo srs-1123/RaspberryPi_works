@@ -57,11 +57,28 @@ GPIO.setup(SPIMOSI, GPIO.OUT)
 GPIO.setup(SPIMISO, GPIO.IN)
 GPIO.setup(SPICS, GPIO.OUT)
 
+LED = 25
+GPIO.setup(LED, GPIO.OUT)
+
 try:
     while True:
         inputVal0 = readadc(0, SPICLK, SPIMOSI, SPIMISO, SPICS)
-        print(inputVal0)
-        sleep(5)
+
+        # 暗いときだけLEDを点滅
+        if inputVal0 < 2000 and inputVal0 >= 200:
+            GPIO.output(LED, GPIO.HIGH)
+            sleep(0.5)
+            GPIO.output(LED, GPIO.LOW)
+            sleep(0.5)
+        elif inputVal0 < 200:
+            GPIO.output(LED, GPIO.HIGH)
+            sleep(0.2)
+            GPIO.output(LED, GPIO.LOW)
+            sleep(0.2)
+        else:
+            GPIO.output(LED, GPIO.LOW)
+            sleep(0.2)
+        # print(inputVal0)
 
 except KeyboardInterrupt:
     pass
